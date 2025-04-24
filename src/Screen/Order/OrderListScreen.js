@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import apiHelper from '../../Common/ApiHelper';
@@ -8,7 +8,25 @@ import { useNavigate } from 'react-router-dom';
 
 export default function OrderListScreen({ Orders, UserInfo, fetchUserOrders }) {
   const [loding, setloding] = useState(false)
+  const [Order, setOrder] = useState([])
   const navigate = useNavigate()
+
+  async function getOrders() {
+    try {
+      const result = await apiHelper.listOrder(UserInfo?._id)
+      setOrder(result.data.data)
+      fetchUserOrders(UserInfo?._id)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+  useEffect(() => {
+    getOrders()
+    fetchUserOrders(UserInfo?._id)
+  }, [])
+
 
   function generateInvoicePDF() {
     const doc = new jsPDF();
@@ -76,6 +94,7 @@ export default function OrderListScreen({ Orders, UserInfo, fetchUserOrders }) {
       setloding(false)
       if (result.status === 200) {
         fetchUserOrders(UserInfo?._id)
+        getOrders()
       }
     } catch (error) {
       setloding(false)
@@ -90,7 +109,7 @@ export default function OrderListScreen({ Orders, UserInfo, fetchUserOrders }) {
       <div className="container">
         <div className="h4 text_main">Your Order Details</div>
         {
-          Orders ? Orders.map((Order) => {
+          Orders || Order ? Order.map((Order) => {
             return <div className="row my-3">
               <div className="col-12">
                 <div className="order_border p-3">
