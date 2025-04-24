@@ -87,7 +87,7 @@ export default function OrderListScreen({ Orders, UserInfo, fetchUserOrders }) {
       <div className="container">
         <div className="h4 text_main">Your Order Details</div>
         {
-          Orders && Orders.map((Order) => {
+          Orders ? Orders.map((Order) => {
             return <div className="row my-3">
               <div className="col-12">
                 <div className="order_border p-3">
@@ -224,7 +224,16 @@ export default function OrderListScreen({ Orders, UserInfo, fetchUserOrders }) {
                 </div>
               </div>
             </div>
-          })
+          }) : <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh" }}>
+            <div className='w-50'>
+              <div className="text-center">
+                <img className='img-fluid' src="./assets/grocery.gif" alt="" />
+              </div>
+              <div className="text-center">
+                <div onClick={() => navigate(Path.home)} className="btn btn_main">Add Product in Cart & Place Order</div>
+              </div>
+            </div>
+          </div>
         }
       </div>
     </div>

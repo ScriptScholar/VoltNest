@@ -6,7 +6,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import HomeIcon from '@mui/icons-material/Home';
 import Path from '../Common/Path';
 
-export default function Footer() {
+export default function Footer({ UserInfo }) {
   const location = useLocation();
   const navigate = useNavigate()
   const path = location.pathname;
@@ -30,7 +30,13 @@ export default function Footer() {
             </div>
           </div>
           <div className="col">
-            <div className={location.pathname === Path.cart ? "text_main" : "text-muted"} onClick={() => navigate(Path.cart)}>
+            <div className={location.pathname === Path.cart ? "text_main" : "text-muted"} onClick={() => {
+              if (UserInfo?._id) {
+                navigate(Path.cart)
+              } else {
+                navigate(Path.login)
+              }
+            }}>
               <div>
                 <ShoppingCartIcon />
               </div>
@@ -38,7 +44,13 @@ export default function Footer() {
             </div>
           </div>
           <div className="col">
-            <div className={location.pathname === Path.orderlist ? "text_main" : "text-muted"} onClick={() => navigate(Path.orderlist)}>
+            <div className={location.pathname === Path.orderlist ? "text_main" : "text-muted"} onClick={() => {
+              if (UserInfo?._id) {
+                navigate(Path.orderlist)
+              } else {
+                navigate(Path.login)
+              }
+            }}>
               <div>
                 <ShoppingBagIcon />
               </div>

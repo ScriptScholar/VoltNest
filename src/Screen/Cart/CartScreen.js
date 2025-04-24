@@ -123,16 +123,17 @@ export default function CartScreen({ CartItems, fetchUserCart, UserInfo, CartTot
               </div>
             </div>
           </div>
-        </div> : <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh" }}>
-          <div className='w-50'>
-            <div className="text-center">
-              <img className='img-fluid' src="./assets/grocery.gif" alt="" />
-            </div>
-            <div className="text-center">
-              <div onClick={() => navigate(Path.home)} className="btn btn_main">Add Product in Cart</div>
+        </div> :
+          <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh" }}>
+            <div className='w-50'>
+              <div className="text-center">
+                <img className='img-fluid' src="./assets/grocery.gif" alt="" />
+              </div>
+              <div className="text-center">
+                <div onClick={() => navigate(Path.home)} className="btn btn_main">Add Product in Cart</div>
+              </div>
             </div>
           </div>
-        </div>
       }
     </div>
   )

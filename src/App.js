@@ -113,7 +113,7 @@ function App() {
           <Route path={Path.orderlist} element={<OrderListScreen Orders={Orders} UserInfo={UserInfo} fetchUserOrders={fetchUserOrders} />} />
         </Routes>
       </main>
-      <Footer CartItems={CartItems} />
+      <Footer CartItems={CartItems} UserInfo={UserInfo} />
     </BrowserRouter>
   );
 }
