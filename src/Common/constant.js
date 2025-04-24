@@ -1,5 +1,6 @@
 const Constant = {
-    APP_URL: "http://192.168.1.2:5000",
+    APP_URL: "https://voltnest-server.onrender.com",
+    // APP_URL: "http://192.168.1.2:5000",
     paymentMethod: ["COD", "Online", "Null"],
     paymentStatus: ["Pending", "Success", "Reject"],
     orderStatus: ["Pending", "Completed", "Cancelled"],

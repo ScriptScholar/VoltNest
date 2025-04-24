@@ -3,6 +3,7 @@ import axios from "axios";
 class ApiHelper {
     constructor() {
         this.baseUrl = "https://voltnest-server.onrender.com"
+        // this.baseUrl = "http://192.168.1.2:5000"
     }
     listProduct() {
         return axios.get(this.baseUrl + "/product/list")

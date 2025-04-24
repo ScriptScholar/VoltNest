@@ -51,6 +51,7 @@ export default function LoginScreen({ setAuth }) {
                 setOpen(true)
                 return
             }
+            console.log(data)
             const result = await apiHelper.loginUser(data)
             setloding(false)
             if (result.status === 200) {

@@ -70,7 +70,6 @@ export default function ProductScreen({ UserInfo, fetchUserCart, CartItems }) {
 
     async function addToCart() {
         try {
-            setloding(true)
             if (!UserInfo?._id) return navigate(Path.login)
             const data = {
                 userId: UserInfo?._id,
@@ -78,12 +77,10 @@ export default function ProductScreen({ UserInfo, fetchUserCart, CartItems }) {
                 qty: 1
             }
             const result = await apiHelper.addToCart(data)
-            setloding(false)
             if (result.status === 200) {
                 fetchUserCart(UserInfo?._id)
             }
         } catch (error) {
-            setloding(false)
             console.log(error)
         }
     }
